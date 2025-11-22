@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>RIMA LAB | Estudio Móvil</title>
+    <title>RIMA LAB | Entrenamiento Completo</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
         
@@ -29,13 +29,13 @@
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--black);
             color: var(--white);
-            line-height: 1.6;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            padding-bottom: 80px; /* Para el bottom nav */
+            padding-bottom: 70px;
         }
         
         body::before {
@@ -45,21 +45,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(226, 24, 54, 0.08) 0%, transparent 60%);
+            background: radial-gradient(circle at 50% 50%, rgba(226, 24, 54, 0.06) 0%, transparent 60%);
             pointer-events: none;
             z-index: 0;
         }
         
         .container {
             max-width: 100%;
-            padding: 1rem;
+            padding: 0.75rem;
             position: relative;
             z-index: 1;
         }
         
-        /* Header Mobile */
+        /* Header Compact */
         header {
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             background: rgba(0, 0, 0, 0.95);
@@ -71,36 +71,78 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.6rem;
         }
         
         .logo-circle {
-            width: 40px;
-            height: 40px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             background: var(--beats-red);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 20px rgba(226, 24, 54, 0.4);
+            font-size: 1.1rem;
+            box-shadow: 0 4px 16px rgba(226, 24, 54, 0.4);
         }
         
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 900;
             letter-spacing: -0.02em;
         }
         
         .subtitle {
             color: var(--gray);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
         }
         
-        /* Bottom Navigation */
+        /* Progress Header Compact */
+        .progress-header {
+            background: var(--black-lighter);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 0.8rem;
+            margin: 0.75rem 0;
+        }
+        
+        .progress-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 0.6rem;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--beats-red) 0%, #ff4466 100%);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        
+        .progress-text {
+            font-size: 0.75rem;
+            color: var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Bottom Navigation Compact */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -111,9 +153,9 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             justify-content: space-around;
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             z-index: 1000;
-            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
         }
         
         .nav-item {
@@ -121,10 +163,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.25rem;
-            padding: 0.5rem;
+            gap: 0.2rem;
+            padding: 0.4rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border: none;
             background: none;
             color: var(--gray);
@@ -135,106 +177,65 @@
         }
         
         .nav-icon {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         
         .nav-label {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
         
-        /* Tabs Content */
+        /* Tabs */
         .tab-content {
             display: none;
-            animation: fadeIn 0.3s ease-out;
         }
         
         .tab-content.active {
             display: block;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        /* Progress Card Mobile */
-        .progress-card {
-            background: var(--black-lighter);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 1.25rem;
-            margin: 1rem 0;
-        }
-        
-        .progress-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-        
-        .progress-item {
-            text-align: center;
-        }
-        
-        .progress-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1;
-            margin-bottom: 0.25rem;
-        }
-        
-        .progress-label {
-            font-size: 0.65rem;
-            font-weight: 600;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        /* Exercise Card Mobile */
+        /* Exercise Card Compact */
         .exercise-card {
             background: var(--black-lighter);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin: 1rem 0;
+            border-radius: 16px;
+            padding: 1rem;
+            margin: 0.75rem 0;
         }
         
         .exercise-header {
-            margin-bottom: 1.25rem;
-            padding-bottom: 1.25rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .exercise-title {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
         
         .exercise-badge {
             display: inline-block;
             background: var(--beats-red);
             color: var(--white);
-            padding: 0.4rem 1rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 100px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
         
-        /* Workflow Mobile */
+        /* Workflow Compact */
         .workflow-step {
             background: var(--black);
             border: 2px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 1.25rem;
-            margin: 1rem 0;
+            border-radius: 12px;
+            padding: 0.9rem;
+            margin: 0.6rem 0;
             position: relative;
         }
         
@@ -251,7 +252,7 @@
         
         .workflow-step.active {
             border-color: var(--beats-red);
-            background: rgba(226, 24, 54, 0.05);
+            background: rgba(226, 24, 54, 0.04);
         }
         
         .workflow-step.active::before {
@@ -265,20 +266,20 @@
         .step-header {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
         }
         
         .step-number {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             background: var(--gray-dark);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             flex-shrink: 0;
         }
         
@@ -287,48 +288,49 @@
         }
         
         .step-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
         }
         
         .step-description {
             color: var(--gray-light);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
         }
         
-        /* Inputs Mobile */
-        .lyrics-input {
+        /* Inputs Compact */
+        .lyrics-input, .note-input {
             width: 100%;
-            min-height: 160px;
-            padding: 1rem;
+            min-height: 120px;
+            padding: 0.8rem;
             background: var(--black);
             border: 2px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
+            border-radius: 10px;
             color: var(--white);
             font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.5;
             resize: vertical;
         }
         
-        .lyrics-input:focus {
+        .lyrics-input:focus, .note-input:focus {
             outline: none;
             border-color: var(--beats-red);
         }
         
-        /* Beat Cards Mobile */
+        /* Beat Cards Compact */
         .beat-grid {
             display: grid;
-            gap: 0.75rem;
-            margin-top: 1rem;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
         }
         
         .beat-card {
             background: var(--black);
             border: 2px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 1rem;
+            border-radius: 10px;
+            padding: 0.8rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -342,49 +344,49 @@
         
         .beat-name {
             font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
         }
         
         .beat-details {
             color: var(--gray);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
         
         .beat-play {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.06);
             border: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         
         .beat-card.playing .beat-play {
             background: var(--beats-red);
         }
         
-        /* Recorder Mobile */
+        /* Recorder Compact */
         .recorder-container {
             background: var(--black);
             border: 2px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 2rem 1rem;
+            border-radius: 12px;
+            padding: 1.2rem 0.8rem;
             text-align: center;
-            margin-top: 1rem;
+            margin-top: 0.8rem;
         }
         
         .record-button {
-            width: 90px;
-            height: 90px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background: var(--beats-red);
-            border: 4px solid var(--black);
-            box-shadow: 0 0 0 4px rgba(226, 24, 54, 0.2), 0 10px 40px rgba(226, 24, 54, 0.5);
-            margin: 0 auto 1.5rem;
+            border: 3px solid var(--black);
+            box-shadow: 0 0 0 3px rgba(226, 24, 54, 0.2), 0 8px 30px rgba(226, 24, 54, 0.4);
+            margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -397,29 +399,29 @@
         
         @keyframes pulse-mobile {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.04); }
         }
         
         .record-icon {
-            width: 32px;
-            height: 32px;
+            width: 26px;
+            height: 26px;
             background: var(--white);
             border-radius: 50%;
         }
         
         .record-button.recording .record-icon {
-            border-radius: 6px;
-            width: 24px;
-            height: 24px;
+            border-radius: 5px;
+            width: 20px;
+            height: 20px;
         }
         
         .record-status {
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--gray);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
         }
         
         .record-status.recording {
@@ -427,31 +429,31 @@
         }
         
         .record-timer {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             font-variant-numeric: tabular-nums;
         }
         
-        /* Buttons Mobile */
+        /* Buttons Compact */
         .btn {
             width: 100%;
-            padding: 1rem;
+            padding: 0.85rem;
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             cursor: pointer;
-            border-radius: 12px;
+            border-radius: 10px;
             border: none;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
+            margin-top: 0.8rem;
+            transition: all 0.2s ease;
         }
         
         .btn-primary {
             background: var(--beats-red);
             color: var(--white);
-            box-shadow: 0 4px 20px rgba(226, 24, 54, 0.3);
+            box-shadow: 0 3px 15px rgba(226, 24, 54, 0.3);
         }
         
         .btn-primary:active {
@@ -463,142 +465,25 @@
             color: var(--white);
         }
         
-        /* Notebook */
-        .notebook-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .notebook-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-        
-        .quick-note-card {
-            background: var(--black-lighter);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .quick-note-card h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--beats-red);
-        }
-        
-        .note-input {
-            width: 100%;
-            min-height: 120px;
-            padding: 1rem;
-            background: var(--black);
-            border: 2px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            resize: vertical;
-            margin-bottom: 1rem;
-        }
-        
-        .note-input:focus {
-            outline: none;
-            border-color: var(--beats-red);
-        }
-        
-        .saved-notes {
-            margin-top: 2rem;
-        }
-        
-        .saved-notes h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--gray-light);
-        }
-        
-        .note-item {
-            background: var(--black);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .note-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.75rem;
-        }
-        
-        .note-date {
-            color: var(--gray);
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        
-        .note-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .icon-btn {
-            background: none;
-            border: none;
-            color: var(--gray);
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.25rem;
-        }
-        
-        .icon-btn:active {
-            color: var(--beats-red);
-        }
-        
-        .note-content {
-            color: var(--white);
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--gray);
-        }
-        
-        .empty-state-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-        
-        /* Playback Mobile */
+        /* Playback Compact */
         .playback-card {
             background: rgba(226, 24, 54, 0.08);
             border: 2px solid rgba(226, 24, 54, 0.2);
-            border-radius: 16px;
-            padding: 1rem;
-            margin-top: 1rem;
+            border-radius: 12px;
+            padding: 0.8rem;
+            margin-top: 0.8rem;
             display: none;
+            align-items: center;
+            gap: 0.8rem;
         }
         
         .playback-card.show {
             display: flex;
-            align-items: center;
-            gap: 1rem;
         }
         
         .play-button {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: var(--beats-red);
             border: none;
@@ -606,7 +491,7 @@
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             flex-shrink: 0;
         }
         
@@ -616,23 +501,23 @@
         
         .playback-title {
             font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 0.2rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.15rem;
         }
         
         .playback-details {
             color: var(--gray);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
         
-        /* Success Mobile */
+        /* Success Compact */
         .success-card {
             background: rgba(226, 24, 54, 0.1);
             border: 2px solid var(--beats-red);
-            border-radius: 16px;
-            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            padding: 1.2rem;
             text-align: center;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
             display: none;
         }
         
@@ -641,35 +526,180 @@
         }
         
         .success-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.6rem;
         }
         
         .success-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
         
         .success-message {
             color: var(--gray-light);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
         }
         
-        /* Tip Box Mobile */
+        /* Tip Box Compact */
         .tip-box {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-size: 0.85rem;
+            border-radius: 10px;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            font-size: 0.8rem;
             color: var(--gray-light);
+            line-height: 1.4;
         }
         
         .tip-box::before {
             content: '💡 ';
+        }
+        
+        /* Instruction Box Compact */
+        .instruction-box {
+            background: rgba(226, 24, 54, 0.08);
+            border: 1px solid rgba(226, 24, 54, 0.15);
+            border-radius: 10px;
+            padding: 0.8rem;
+            margin: 0.6rem 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        
+        .instruction-box strong {
+            color: var(--beats-red);
+        }
+        
+        /* Notebook Compact */
+        .notebook-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .notebook-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .quick-note-card {
+            background: var(--black-lighter);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .quick-note-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--beats-red);
+        }
+        
+        .saved-notes h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--gray-light);
+        }
+        
+        .note-item {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 0.8rem;
+            margin-bottom: 0.6rem;
+        }
+        
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+        }
+        
+        .note-date {
+            color: var(--gray);
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .icon-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0.2rem;
+        }
+        
+        .note-content {
+            color: var(--white);
+            line-height: 1.5;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--gray);
+        }
+        
+        .empty-state-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.5;
+        }
+        
+        /* Stats Grid Compact */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 0.8rem 0;
+        }
+        
+        .stat-card {
+            background: var(--black-lighter);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 0.8rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+        
+        .stat-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Navigation Controls */
+        .nav-controls {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+        
+        .nav-controls .btn {
+            flex: 1;
         }
         
         /* Tablet+ */
@@ -677,14 +707,14 @@
             .container {
                 max-width: 700px;
                 margin: 0 auto;
-                padding: 2rem;
+                padding: 1.5rem;
             }
             
             .bottom-nav {
                 max-width: 700px;
                 left: 50%;
                 transform: translateX(-50%);
-                border-radius: 20px 20px 0 0;
+                border-radius: 16px 16px 0 0;
             }
         }
     </style>
@@ -696,121 +726,38 @@
                 <div class="logo-circle">R</div>
                 <div>
                     <h1>RIMA LAB</h1>
-                    <div class="subtitle">STUDIO MÓVIL</div>
+                    <div class="subtitle">ENTRENAMIENTO PRO</div>
                 </div>
             </div>
         </header>
         
         <!-- TAB: ENTRENAR -->
         <div id="entrenar" class="tab-content active">
-            <div class="progress-card">
-                <div class="progress-grid">
-                    <div class="progress-item">
-                        <div class="progress-number">1/7</div>
-                        <div class="progress-label">Fase</div>
-                    </div>
-                    <div class="progress-item">
-                        <div class="progress-number" id="currentEx">1/5</div>
-                        <div class="progress-label">Ejercicio</div>
-                    </div>
-                    <div class="progress-item">
-                        <div class="progress-number" id="recordCount">0</div>
-                        <div class="progress-label">Grabaciones</div>
-                    </div>
+            <!-- Progress Bar -->
+            <div class="progress-header">
+                <div class="progress-title">🎤 GUÍA MAESTRA DE ENTRENAMIENTO FONÉTICO</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progressInfo">Fase 1 - Ejercicio 1/5</span>
+                    <span id="progressPercent">4%</span>
                 </div>
             </div>
             
-            <div class="exercise-card">
-                <div class="exercise-header">
-                    <div class="exercise-title">Primera Barra en A</div>
-                    <div class="exercise-badge">Fase 1 • Ej. 1</div>
-                </div>
-                
-                <!-- Step 1 -->
-                <div class="workflow-step active" id="step1">
-                    <div class="step-header">
-                        <div class="step-number">1</div>
-                        <div class="step-title">Escribí</div>
-                    </div>
-                    <div class="step-description">
-                        4 líneas que terminen en A
-                    </div>
-                    <textarea 
-                        class="lyrics-input" 
-                        id="lyricsInput"
-                        placeholder="En la calle camino con mi raza
-Cada día mejoro sin que pasa..."
-                    ></textarea>
-                    <button class="btn btn-primary" onclick="completeStep(1)">
-                        Siguiente: Elegir Beat →
-                    </button>
-                </div>
-                
-                <!-- Step 2 -->
-                <div class="workflow-step" id="step2">
-                    <div class="step-header">
-                        <div class="step-number">2</div>
-                        <div class="step-title">Elegí Beat</div>
-                    </div>
-                    <div class="beat-grid" id="beatGrid"></div>
-                    <div class="tip-box">
-                        Principiante? Empezá con 90 BPM
-                    </div>
-                    <button class="btn btn-primary" onclick="completeStep(2)">
-                        Siguiente: Grabar →
-                    </button>
-                </div>
-                
-                <!-- Step 3 -->
-                <div class="workflow-step" id="step3">
-                    <div class="step-header">
-                        <div class="step-number">3</div>
-                        <div class="step-title">Grabate</div>
-                    </div>
-                    <div class="recorder-container">
-                        <button class="record-button" id="recordBtn" onclick="toggleRecording()">
-                            <div class="record-icon"></div>
-                        </button>
-                        <div class="record-status" id="recordStatus">LISTO</div>
-                        <div class="record-timer" id="recordTimer">00:00</div>
-                    </div>
-                    <div class="tip-box">
-                        No importa si no sale perfecto. Es práctica.
-                    </div>
-                </div>
-                
-                <!-- Step 4 -->
-                <div class="workflow-step" id="step4">
-                    <div class="step-header">
-                        <div class="step-number">4</div>
-                        <div class="step-title">Escuchá</div>
-                    </div>
-                    <div class="playback-card" id="playbackCard">
-                        <button class="play-button" onclick="playRecording()">▶</button>
-                        <div class="playback-info">
-                            <div class="playback-title">Tu grabación</div>
-                            <div class="playback-details" id="playbackDetails">--</div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" onclick="completeExercise()">
-                        ✓ Completar
-                    </button>
-                    <button class="btn btn-secondary" onclick="reRecord()">
-                        🔄 Re-grabar
-                    </button>
-                </div>
-                
-                <!-- Success -->
-                <div class="success-card" id="successCard">
-                    <div class="success-icon">🔥</div>
-                    <div class="success-title">¡Completado!</div>
-                    <div class="success-message">
-                        Primera barra grabada. Seguí así!
-                    </div>
-                    <button class="btn btn-primary" onclick="alert('Siguiente ejercicio')">
-                        Siguiente →
-                    </button>
-                </div>
+            <!-- Current Exercise Container -->
+            <div id="exerciseContainer">
+                <!-- Exercises loaded dynamically -->
+            </div>
+            
+            <!-- Navigation Controls -->
+            <div class="nav-controls">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousExercise()" style="display:none;">
+                    ← Anterior
+                </button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextExercise()" style="display:none;">
+                    Siguiente →
+                </button>
             </div>
         </div>
         
@@ -825,9 +772,7 @@ Cada día mejoro sin que pasa..."
                 <textarea 
                     class="note-input" 
                     id="noteInput" 
-                    placeholder="Escribí tus rimas, ideas, barras...
-Todo se guarda automático"
-                ></textarea>
+                    placeholder="Rimas, ideas, barras..."></textarea>
                 <button class="btn btn-primary" onclick="saveNote()">
                     💾 Guardar Nota
                 </button>
@@ -838,7 +783,7 @@ Todo se guarda automático"
                 <div id="notesList">
                     <div class="empty-state">
                         <div class="empty-state-icon">📄</div>
-                        <p>Todavía no tenés notas guardadas</p>
+                        <p>Sin notas guardadas</p>
                     </div>
                 </div>
             </div>
@@ -849,12 +794,7 @@ Todo se guarda automático"
             <div class="notebook-header">
                 <div class="notebook-title">🎵 Beats</div>
             </div>
-            
             <div class="beat-grid" id="beatGridFull"></div>
-            
-            <div class="tip-box" style="margin-top: 2rem;">
-                Usá los beats para practicar. Podés rapear sin grabar, solo para entrenar tu flow.
-            </div>
         </div>
         
         <!-- TAB: PROGRESO -->
@@ -863,29 +803,24 @@ Todo se guarda automático"
                 <div class="notebook-title">📊 Progreso</div>
             </div>
             
-            <div class="progress-card">
-                <div class="progress-grid">
-                    <div class="progress-item">
-                        <div class="progress-number" id="totalRecordings">0</div>
-                        <div class="progress-label">Grabaciones</div>
-                    </div>
-                    <div class="progress-item">
-                        <div class="progress-number" id="totalNotes">0</div>
-                        <div class="progress-label">Notas</div>
-                    </div>
-                    <div class="progress-item">
-                        <div class="progress-number" id="practiceTime">0</div>
-                        <div class="progress-label">Minutos</div>
-                    </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalExercises">0/25</div>
+                    <div class="stat-label">Ejercicios</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalRecordings">0</div>
+                    <div class="stat-label">Grabaciones</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalNotes">0</div>
+                    <div class="stat-label">Notas</div>
                 </div>
             </div>
             
             <div class="exercise-card">
-                <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">🔥 Keep Going</h3>
-                <p style="color: var(--gray-light); line-height: 1.6;">
-                    La práctica diaria es clave. Intentá grabar al menos 5 minutos por día. 
-                    Después de 30 días vas a notar la diferencia.
-                </p>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem;">Fases Completadas</h3>
+                <div id="phasesList"></div>
             </div>
         </div>
     </div>
@@ -911,8 +846,295 @@ Todo se guarda automático"
     </div>
     
     <script>
-        // Estado
+        // EXERCISES DATABASE - 25 EXERCISES ACROSS 7 PHASES
+        const EXERCISES = [
+            // FASE 1: VOCALES (5 ejercicios)
+            {
+                phase: 1, id: 1, title: 'Primera Barra en A',
+                instruction: 'Escribí 4 barras donde TODAS terminen en vocal A. Después grabar y escuchar tu flow.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '4 líneas que terminen en A', type: 'lyrics', placeholder: 'En la calle camino con mi raza\nCada día mejoro sin que pasa...' },
+                    { title: 'Elegí Beat', desc: 'Seleccioná y escuchá', type: 'beats' },
+                    { title: 'Grabate', desc: 'Click en el botón rojo', type: 'record' },
+                    { title: 'Escuchá', desc: 'Reproducí tu grabación', type: 'playback' }
+                ]
+            },
+            {
+                phase: 1, id: 2, title: 'Familia de Vocales',
+                instruction: 'Creá tu banco de palabras. 5 palabras por cada vocal (A, E, I, O, U).',
+                hasRecording: false,
+                steps: [
+                    { title: 'Listá Palabras', desc: 'Escribí 5 palabras por vocal', type: 'text' }
+                ]
+            },
+            {
+                phase: 1, id: 3, title: 'Challenge Vocal',
+                instruction: '4 barras en A, después 4 barras en E. Sentí la diferencia de color.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '4 en A + 4 en E', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 1, id: 4, title: 'Mezclá Vocales',
+                instruction: '8 barras mezclando diferentes vocales finales. Puede ser AABB, ABAB o libre.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '8 barras mixtas', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 1, id: 5, title: 'Práctica Libre - Vocales',
+                instruction: 'Escribí y grabá 8 barras libres aplicando todo lo aprendido sobre vocales.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '8 barras libres', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            
+            // FASE 2: ACENTOS (4 ejercicios)
+            {
+                phase: 2, id: 6, title: 'Identifica Acentos',
+                instruction: 'Clasificá palabras como AGUDA, GRAVE o ESDRÚJULA para entrenar tu oído.',
+                hasRecording: false,
+                steps: [
+                    { title: 'Práctica', desc: 'Clasificá las palabras', type: 'text' }
+                ]
+            },
+            {
+                phase: 2, id: 7, title: 'Barras Agudas',
+                instruction: '4 barras donde TODAS las últimas palabras sean agudas. Dan punch al final.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '4 barras agudas', type: 'lyrics', placeholder: 'Yo voy a ganar porque sé rapear\nEn cada batalla me van a escuchar...' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 2, id: 8, title: 'Barras Graves',
+                instruction: '4 barras con palabras graves al final. Flow más fluido y natural.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '4 barras graves', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 2, id: 9, title: 'Contraste de Acentos',
+                instruction: '8 barras alternando: aguda, grave, aguda, grave. Sentí la diferencia en tu flow.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '8 barras alternadas', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            
+            // FASE 3: SÍLABAS (3 ejercicios)
+            {
+                phase: 3, id: 10, title: 'Cuenta Sílabas',
+                instruction: 'Practicá contar sílabas en diferentes palabras para controlar la métrica.',
+                hasRecording: false,
+                steps: [
+                    { title: 'Práctica', desc: 'Contá sílabas', type: 'text' }
+                ]
+            },
+            {
+                phase: 3, id: 11, title: 'Métrica de 8 Sílabas',
+                instruction: '4 barras de exactamente 8 sílabas cada una. Métrica constante = flow profesional.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '4 barras de 8 sílabas', type: 'lyrics', placeholder: 'Yo-ca-mi-no-en-la-ca-lle (8)\nCon-mi-flow-y-mi-es-ti-lo (8)...' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 3, id: 12, title: 'Varía la Métrica',
+                instruction: '4 barras variando: 8 sílabas, 10 sílabas, 8 sílabas, 10 sílabas. Crea dinamismo.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '4 barras variadas', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            
+            // FASE 4: RIMAS (4 ejercicios)
+            {
+                phase: 4, id: 13, title: 'Banco de Rimas',
+                instruction: 'Escribí 10 palabras que rimen con CORAZÓN. Desarrollá tu diccionario mental.',
+                hasRecording: false,
+                steps: [
+                    { title: 'Listá', desc: '10 palabras que rimen', type: 'text' }
+                ]
+            },
+            {
+                phase: 4, id: 14, title: 'Rima Consonante AABB',
+                instruction: '4 barras con esquema AABB: las primeras 2 riman, las otras 2 riman.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '4 barras AABB', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 4, id: 15, title: 'Rima Cruzada ABAB',
+                instruction: '4 barras con esquema ABAB: 1 rima con 3, y 2 rima con 4. Más técnico.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '4 barras ABAB', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 4, id: 16, title: 'Rimas Internas',
+                instruction: '4 barras con al menos 1 rima interna por línea. Nivel avanzado.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '4 barras con internas', type: 'lyrics', placeholder: 'Mi MENTE está PRESENTE, tu GENTE solo MIENTE...' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            
+            // FASE 5: FLOW (3 ejercicios)
+            {
+                phase: 5, id: 17, title: 'Flow Recto',
+                instruction: '8 barras con flow constante y marcado. Sin cambios de velocidad.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '8 barras rectas', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 5, id: 18, title: 'Flow Sincopado',
+                instruction: '8 barras con cortes, pausas y cambios de ritmo. Más dinámico.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '8 barras sincopadas', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 5, id: 19, title: 'Doble Tiempo',
+                instruction: '8 barras donde al menos 4 las rapeás al doble de velocidad. Práctica de velocidad.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '8 barras con doble', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            
+            // FASE 6: BARRAS COMPLETAS (3 ejercicios)
+            {
+                phase: 6, id: 20, title: 'Estructura Completa',
+                instruction: '16 barras con estructura: Intro (4) + Desarrollo (8) + Cierre (4).',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '16 barras estructuradas', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 6, id: 21, title: 'Barras Conceptuales',
+                instruction: '16 barras sobre UN tema específico. Mantené el concepto toda la vuelta.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '16 barras conceptuales', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 6, id: 22, title: 'Storytelling',
+                instruction: '16 barras contando una historia completa con inicio, desarrollo y final.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '16 barras narrativas', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            
+            // FASE 7: ESTILO PROPIO (3 ejercicios)
+            {
+                phase: 7, id: 23, title: 'Define tu Estilo',
+                instruction: '16 barras aplicando TODO lo aprendido. Creá tu firma personal.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '16 barras estilo propio', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 7, id: 24, title: 'Freestyle Challenge',
+                instruction: '2 minutos de freestyle. No escribas nada antes. Solo improvisá y grabá.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Freestyle 2min', desc: 'Improvisá directo', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            },
+            {
+                phase: 7, id: 25, title: 'Proyecto Final',
+                instruction: '32 barras completas. Tu mejor trabajo. Aplicá TODO lo que aprendiste.',
+                hasRecording: true,
+                steps: [
+                    { title: 'Escribí', desc: '32 barras finales', type: 'lyrics' },
+                    { title: 'Elegí Beat', type: 'beats' },
+                    { title: 'Grabate', type: 'record' },
+                    { title: 'Escuchá', type: 'playback' }
+                ]
+            }
+        ];
+        
+        const beats = [
+            { id: 1, name: 'Boom Bap 90', bpm: 90, style: 'Classic' },
+            { id: 2, name: 'Trap 140', bpm: 140, style: 'Modern' },
+            { id: 3, name: 'Lo-Fi 85', bpm: 85, style: 'Chill' },
+            { id: 4, name: 'Drill 145', bpm: 145, style: 'Hard' }
+        ];
+        
+        // STATE
         let state = {
+            currentExerciseIndex: 0,
             currentStep: 1,
             selectedBeat: null,
             beatAudio: null,
@@ -922,52 +1144,193 @@ Todo se guarda automático"
             currentRecording: null,
             recordStartTime: null,
             timerInterval: null,
-            recordingCount: 0,
+            completedExercises: [],
             notes: [],
-            practiceTime: 0
+            recordings: []
         };
         
-        const beats = [
-            { id: 1, name: 'Boom Bap 90', bpm: 90, style: 'Classic' },
-            { id: 2, name: 'Trap 140', bpm: 140, style: 'Modern' },
-            { id: 3, name: 'Lo-Fi 85', bpm: 85, style: 'Chill' },
-            { id: 4, name: 'Drill 145', bpm: 145, style: 'Hard' }
-        ];
-        
-        // Tabs
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById(tabName).classList.add('active');
-            event.target.closest('.nav-item').classList.add('active');
+        // LOAD/SAVE
+        function loadState() {
+            const saved = localStorage.getItem('rimaLabState');
+            if (saved) {
+                const data = JSON.parse(saved);
+                state.currentExerciseIndex = data.currentExerciseIndex || 0;
+                state.completedExercises = data.completedExercises || [];
+                state.notes = data.notes || [];
+                state.recordings = data.recordings || [];
+            }
         }
         
-        // Init beats
-        function initBeats() {
-            [document.getElementById('beatGrid'), document.getElementById('beatGridFull')].forEach(container => {
-                if (!container) return;
-                container.innerHTML = '';
-                beats.forEach(beat => {
-                    const div = document.createElement('div');
-                    div.className = 'beat-card';
-                    div.id = 'beat-' + beat.id + '-' + container.id;
-                    div.onclick = () => selectBeat(beat.id);
-                    div.innerHTML = `
-                        <div class="beat-info">
-                            <div class="beat-name">${beat.name}</div>
-                            <div class="beat-details">${beat.bpm} BPM • ${beat.style}</div>
+        function saveState() {
+            localStorage.setItem('rimaLabState', JSON.stringify({
+                currentExerciseIndex: state.currentExerciseIndex,
+                completedExercises: state.completedExercises,
+                notes: state.notes,
+                recordings: state.recordings
+            }));
+        }
+        
+        // RENDER EXERCISE
+        function renderCurrentExercise() {
+            const exercise = EXERCISES[state.currentExerciseIndex];
+            const container = document.getElementById('exerciseContainer');
+            
+            const phaseInfo = `Fase ${exercise.phase} • Ej. ${(EXERCISES.filter(e => e.phase === exercise.phase).indexOf(exercise) + 1)}`;
+            
+            let html = `
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <div class="exercise-title">${exercise.title}</div>
+                        <div class="exercise-badge">${phaseInfo}</div>
+                    </div>
+                    <div class="instruction-box">
+                        <strong>OBJETIVO:</strong> ${exercise.instruction}
+                    </div>
+            `;
+            
+            // Render steps
+            exercise.steps.forEach((step, idx) => {
+                const stepNum = idx + 1;
+                const isActive = stepNum === state.currentStep;
+                const isCompleted = stepNum < state.currentStep;
+                
+                html += `
+                    <div class="workflow-step ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}" id="step${stepNum}">
+                        <div class="step-header">
+                            <div class="step-number">${stepNum}</div>
+                            <div class="step-title">${step.title}</div>
                         </div>
-                        <button class="beat-play" onclick="toggleBeat(${beat.id}, event)">▶</button>
+                `;
+                
+                if (step.desc) {
+                    html += `<div class="step-description">${step.desc}</div>`;
+                }
+                
+                // Render step content based on type
+                if (step.type === 'lyrics' || step.type === 'text') {
+                    html += `
+                        <textarea 
+                            class="lyrics-input" 
+                            id="stepInput${stepNum}"
+                            placeholder="${step.placeholder || 'Escribí acá...'}"
+                        ></textarea>
                     `;
-                    container.appendChild(div);
-                });
+                }
+                
+                if (step.type === 'beats') {
+                    html += `<div class="beat-grid" id="beatGrid${stepNum}"></div>`;
+                    html += `<div class="tip-box">Principiante? Empezá con 90 BPM</div>`;
+                }
+                
+                if (step.type === 'record') {
+                    html += `
+                        <div class="recorder-container">
+                            <button class="record-button" id="recordBtn" onclick="toggleRecording()">
+                                <div class="record-icon"></div>
+                            </button>
+                            <div class="record-status" id="recordStatus">LISTO</div>
+                            <div class="record-timer" id="recordTimer">00:00</div>
+                        </div>
+                        <div class="tip-box">No importa si no sale perfecto. Es práctica.</div>
+                    `;
+                }
+                
+                if (step.type === 'playback') {
+                    html += `
+                        <div class="playback-card" id="playbackCard">
+                            <button class="play-button" onclick="playRecording()">▶</button>
+                            <div class="playback-info">
+                                <div class="playback-title">Tu grabación</div>
+                                <div class="playback-details" id="playbackDetails">--</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // Step navigation button
+                if (isActive && stepNum < exercise.steps.length) {
+                    html += `<button class="btn btn-primary" onclick="completeStep(${stepNum})">Siguiente Paso →</button>`;
+                } else if (isActive && stepNum === exercise.steps.length) {
+                    html += `<button class="btn btn-primary" onclick="completeExercise()">✓ Completar Ejercicio</button>`;
+                    if (exercise.hasRecording) {
+                        html += `<button class="btn btn-secondary" onclick="reRecord()">🔄 Re-grabar</button>`;
+                    }
+                }
+                
+                html += `</div>`;
+            });
+            
+            html += `</div>`;
+            
+            // Success card
+            html += `
+                <div class="success-card" id="successCard">
+                    <div class="success-icon">🔥</div>
+                    <div class="success-title">¡Ejercicio Completado!</div>
+                    <div class="success-message">
+                        ${exercise.id < 25 ? 'Seguí así, vas por buen camino.' : '¡Completaste TODOS los ejercicios! Sos un profesional.'}
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+            
+            // Init beats if needed
+            exercise.steps.forEach((step, idx) => {
+                if (step.type === 'beats') {
+                    initBeatsForStep(idx + 1);
+                }
+            });
+            
+            // Update progress
+            updateProgress();
+            updateNavButtons();
+        }
+        
+        // BEATS
+        function initBeatsForStep(stepNum) {
+            const container = document.getElementById('beatGrid' + stepNum);
+            if (!container) return;
+            
+            container.innerHTML = '';
+            beats.forEach(beat => {
+                const div = document.createElement('div');
+                div.className = 'beat-card';
+                div.id = 'beat-' + beat.id + '-step' + stepNum;
+                div.onclick = () => selectBeat(beat.id);
+                div.innerHTML = `
+                    <div class="beat-info">
+                        <div class="beat-name">${beat.name}</div>
+                        <div class="beat-details">${beat.bpm} BPM • ${beat.style}</div>
+                    </div>
+                    <button class="beat-play" onclick="toggleBeat(${beat.id}, event)">▶</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+        
+        function initBeatsTab() {
+            const container = document.getElementById('beatGridFull');
+            container.innerHTML = '';
+            beats.forEach(beat => {
+                const div = document.createElement('div');
+                div.className = 'beat-card';
+                div.id = 'beat-full-' + beat.id;
+                div.onclick = () => selectBeat(beat.id);
+                div.innerHTML = `
+                    <div class="beat-info">
+                        <div class="beat-name">${beat.name}</div>
+                        <div class="beat-details">${beat.bpm} BPM • ${beat.style}</div>
+                    </div>
+                    <button class="beat-play" onclick="toggleBeat(${beat.id}, event)">▶</button>
+                `;
+                container.appendChild(div);
             });
         }
         
         function selectBeat(beatId) {
             document.querySelectorAll('.beat-card').forEach(el => el.classList.remove('selected'));
-            document.querySelectorAll(`[id^="beat-${beatId}"]`).forEach(el => el.classList.add('selected'));
+            document.querySelectorAll(`[id*="beat-${beatId}"]`).forEach(el => el.classList.add('selected'));
             state.selectedBeat = beatId;
         }
         
@@ -1005,7 +1368,7 @@ Todo se guarda automático"
             oscillator.stop(time);
             state.beatAudio = audioContext;
             
-            document.querySelectorAll(`[id^="beat-${beatId}"]`).forEach(el => {
+            document.querySelectorAll(`[id*="beat-${beatId}"]`).forEach(el => {
                 el.classList.add('playing');
                 const btn = el.querySelector('.beat-play');
                 if (btn) btn.textContent = '⏸';
@@ -1029,27 +1392,7 @@ Todo se guarda automático"
             });
         }
         
-        function completeStep(stepNum) {
-            if (stepNum === 1 && !document.getElementById('lyricsInput').value.trim()) {
-                alert('Escribí tus barras primero');
-                return;
-            }
-            if (stepNum === 2 && !state.selectedBeat) {
-                alert('Elegí un beat');
-                return;
-            }
-            
-            document.getElementById('step' + stepNum).classList.remove('active');
-            document.getElementById('step' + stepNum).classList.add('completed');
-            document.getElementById('step' + (stepNum + 1)).classList.add('active');
-            state.currentStep = stepNum + 1;
-            
-            document.getElementById('step' + (stepNum + 1)).scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-        }
-        
+        // RECORDING
         async function toggleRecording() {
             if (state.isRecording) {
                 stopRecording();
@@ -1078,14 +1421,26 @@ Todo se guarda automático"
                         duration: Math.floor((Date.now() - state.recordStartTime) / 1000)
                     };
                     
-                    document.getElementById('playbackCard').classList.add('show');
-                    document.getElementById('playbackDetails').textContent = 
-                        `Duración: ${state.currentRecording.duration}s`;
+                    state.recordings.push({
+                        exerciseId: EXERCISES[state.currentExerciseIndex].id,
+                        date: new Date().toLocaleString('es-AR'),
+                        duration: state.currentRecording.duration
+                    });
                     
-                    completeStep(3);
+                    const playback = document.getElementById('playbackCard');
+                    if (playback) {
+                        playback.classList.add('show');
+                        document.getElementById('playbackDetails').textContent = 
+                            `Duración: ${state.currentRecording.duration}s`;
+                    }
                     
-                    state.recordingCount++;
-                    state.practiceTime += Math.floor(state.currentRecording.duration / 60);
+                    const currentStepEl = document.querySelector('.workflow-step.active');
+                    if (currentStepEl) {
+                        const stepNum = parseInt(currentStepEl.id.replace('step', ''));
+                        completeStep(stepNum);
+                    }
+                    
+                    saveState();
                     updateStats();
                 };
                 
@@ -1093,9 +1448,13 @@ Todo se guarda automático"
                 state.isRecording = true;
                 state.recordStartTime = Date.now();
                 
-                document.getElementById('recordBtn').classList.add('recording');
-                document.getElementById('recordStatus').textContent = 'GRABANDO';
-                document.getElementById('recordStatus').classList.add('recording');
+                const btn = document.getElementById('recordBtn');
+                const status = document.getElementById('recordStatus');
+                if (btn) btn.classList.add('recording');
+                if (status) {
+                    status.textContent = 'GRABANDO';
+                    status.classList.add('recording');
+                }
                 
                 startTimer();
                 
@@ -1110,9 +1469,13 @@ Todo se guarda automático"
                 state.mediaRecorder.stream.getTracks().forEach(track => track.stop());
                 state.isRecording = false;
                 
-                document.getElementById('recordBtn').classList.remove('recording');
-                document.getElementById('recordStatus').textContent = 'LISTO';
-                document.getElementById('recordStatus').classList.remove('recording');
+                const btn = document.getElementById('recordBtn');
+                const status = document.getElementById('recordStatus');
+                if (btn) btn.classList.remove('recording');
+                if (status) {
+                    status.textContent = 'LISTO';
+                    status.classList.remove('recording');
+                }
                 
                 stopTimer();
             }
@@ -1123,7 +1486,8 @@ Todo se guarda automático"
                 const elapsed = Math.floor((Date.now() - state.recordStartTime) / 1000);
                 const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
                 const seconds = (elapsed % 60).toString().padStart(2, '0');
-                document.getElementById('recordTimer').textContent = `${minutes}:${seconds}`;
+                const timer = document.getElementById('recordTimer');
+                if (timer) timer.textContent = `${minutes}:${seconds}`;
             }, 1000);
         }
         
@@ -1132,7 +1496,8 @@ Todo se guarda automático"
                 clearInterval(state.timerInterval);
                 state.timerInterval = null;
             }
-            document.getElementById('recordTimer').textContent = '00:00';
+            const timer = document.getElementById('recordTimer');
+            if (timer) timer.textContent = '00:00';
         }
         
         function playRecording() {
@@ -1143,20 +1508,153 @@ Todo se guarda automático"
         }
         
         function reRecord() {
-            document.getElementById('step3').classList.remove('completed');
-            document.getElementById('step3').classList.add('active');
-            document.getElementById('step4').classList.remove('active');
-            document.getElementById('playbackCard').classList.remove('show');
-            document.getElementById('successCard').classList.remove('show');
-            state.currentStep = 3;
+            // Find record step and activate it
+            const exercise = EXERCISES[state.currentExerciseIndex];
+            const recordStepIndex = exercise.steps.findIndex(s => s.type === 'record');
+            if (recordStepIndex >= 0) {
+                state.currentStep = recordStepIndex + 1;
+                renderCurrentExercise();
+            }
+        }
+        
+        // NAVIGATION
+        function completeStep(stepNum) {
+            const exercise = EXERCISES[state.currentExerciseIndex];
+            
+            // Validation
+            const step = exercise.steps[stepNum - 1];
+            if ((step.type === 'lyrics' || step.type === 'text') && stepNum < exercise.steps.length) {
+                const input = document.getElementById('stepInput' + stepNum);
+                if (input && !input.value.trim()) {
+                    alert('Completá este paso primero');
+                    return;
+                }
+            }
+            
+            if (step.type === 'beats' && !state.selectedBeat) {
+                alert('Elegí un beat primero');
+                return;
+            }
+            
+            state.currentStep = stepNum + 1;
+            renderCurrentExercise();
+            
+            // Scroll to next step
+            setTimeout(() => {
+                const nextStep = document.getElementById('step' + state.currentStep);
+                if (nextStep) {
+                    nextStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 100);
         }
         
         function completeExercise() {
-            document.getElementById('step4').classList.add('completed');
+            const exercise = EXERCISES[state.currentExerciseIndex];
+            
+            if (!state.completedExercises.includes(exercise.id)) {
+                state.completedExercises.push(exercise.id);
+            }
+            
+            saveState();
+            updateProgress();
+            updateStats();
+            
             document.getElementById('successCard').classList.add('show');
+            document.getElementById('successCard').scrollIntoView({ behavior: 'smooth' });
+            
+            updateNavButtons();
         }
         
-        // Notebook
+        function previousExercise() {
+            if (state.currentExerciseIndex > 0) {
+                state.currentExerciseIndex--;
+                state.currentStep = 1;
+                state.selectedBeat = null;
+                state.currentRecording = null;
+                saveState();
+                renderCurrentExercise();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        
+        function nextExercise() {
+            if (state.currentExerciseIndex < EXERCISES.length - 1) {
+                state.currentExerciseIndex++;
+                state.currentStep = 1;
+                state.selectedBeat = null;
+                state.currentRecording = null;
+                saveState();
+                renderCurrentExercise();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (prevBtn) {
+                prevBtn.style.display = state.currentExerciseIndex > 0 ? 'block' : 'none';
+            }
+            
+            if (nextBtn) {
+                const isCompleted = state.completedExercises.includes(EXERCISES[state.currentExerciseIndex].id);
+                nextBtn.style.display = (isCompleted && state.currentExerciseIndex < EXERCISES.length - 1) ? 'block' : 'none';
+            }
+        }
+        
+        // PROGRESS
+        function updateProgress() {
+            const totalExercises = EXERCISES.length;
+            const completed = state.completedExercises.length;
+            const percentage = Math.round((completed / totalExercises) * 100);
+            
+            document.getElementById('progressBarFill').style.width = percentage + '%';
+            document.getElementById('progressPercent').textContent = percentage + '%';
+            
+            const current = EXERCISES[state.currentExerciseIndex];
+            const phaseExercises = EXERCISES.filter(e => e.phase === current.phase);
+            const currentInPhase = phaseExercises.indexOf(current) + 1;
+            
+            document.getElementById('progressInfo').textContent = 
+                `Fase ${current.phase} - Ejercicio ${currentInPhase}/${phaseExercises.length}`;
+        }
+        
+        function updateStats() {
+            document.getElementById('totalExercises').textContent = 
+                `${state.completedExercises.length}/25`;
+            document.getElementById('totalRecordings').textContent = state.recordings.length;
+            document.getElementById('totalNotes').textContent = state.notes.length;
+            
+            // Update phases list
+            const phasesContainer = document.getElementById('phasesList');
+            if (phasesContainer) {
+                let html = '';
+                for (let phase = 1; phase <= 7; phase++) {
+                    const phaseExercises = EXERCISES.filter(e => e.phase === phase);
+                    const completed = phaseExercises.filter(e => 
+                        state.completedExercises.includes(e.id)
+                    ).length;
+                    const total = phaseExercises.length;
+                    const percent = Math.round((completed / total) * 100);
+                    
+                    html += `
+                        <div style="margin-bottom: 0.8rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                <span style="font-size: 0.85rem; font-weight: 600;">Fase ${phase}</span>
+                                <span style="font-size: 0.75rem; color: var(--gray);">${completed}/${total}</span>
+                            </div>
+                            <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden;">
+                                <div style="height: 100%; background: var(--beats-red); width: ${percent}%;"></div>
+                            </div>
+                        </div>
+                    `;
+                }
+                phasesContainer.innerHTML = html;
+            }
+        }
+        
+        // NOTEBOOK
         function saveNote() {
             const content = document.getElementById('noteInput').value.trim();
             if (!content) {
@@ -1177,8 +1675,9 @@ Todo se guarda automático"
             };
             
             state.notes.unshift(note);
-            saveToStorage();
+            saveState();
             renderNotes();
+            updateStats();
             
             document.getElementById('noteInput').value = '';
             alert('Nota guardada! 💾');
@@ -1191,7 +1690,7 @@ Todo se guarda automático"
                 container.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon">📄</div>
-                        <p>Todavía no tenés notas guardadas</p>
+                        <p>Sin notas guardadas</p>
                     </div>
                 `;
                 return;
@@ -1201,9 +1700,7 @@ Todo se guarda automático"
                 <div class="note-item">
                     <div class="note-header">
                         <div class="note-date">${note.date}</div>
-                        <div class="note-actions">
-                            <button class="icon-btn" onclick="deleteNote(${note.id})">🗑️</button>
-                        </div>
+                        <button class="icon-btn" onclick="deleteNote(${note.id})">🗑️</button>
                     </div>
                     <div class="note-content">${note.content}</div>
                 </div>
@@ -1213,48 +1710,31 @@ Todo se guarda automático"
         function deleteNote(id) {
             if (confirm('¿Borrar esta nota?')) {
                 state.notes = state.notes.filter(n => n.id !== id);
-                saveToStorage();
+                saveState();
                 renderNotes();
                 updateStats();
             }
         }
         
-        function saveToStorage() {
-            localStorage.setItem('rimaLabNotes', JSON.stringify(state.notes));
-            localStorage.setItem('rimaLabStats', JSON.stringify({
-                recordingCount: state.recordingCount,
-                practiceTime: state.practiceTime
-            }));
-        }
-        
-        function loadFromStorage() {
-            const notes = localStorage.getItem('rimaLabNotes');
-            if (notes) state.notes = JSON.parse(notes);
+        // TABS
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             
-            const stats = localStorage.getItem('rimaLabStats');
-            if (stats) {
-                const saved = JSON.parse(stats);
-                state.recordingCount = saved.recordingCount || 0;
-                state.practiceTime = saved.practiceTime || 0;
-            }
-            
-            renderNotes();
-            updateStats();
+            document.getElementById(tabName).classList.add('active');
+            event.target.closest('.nav-item').classList.add('active');
         }
         
-        function updateStats() {
-            document.getElementById('recordCount').textContent = state.recordingCount;
-            document.getElementById('totalRecordings').textContent = state.recordingCount;
-            document.getElementById('totalNotes').textContent = state.notes.length;
-            document.getElementById('practiceTime').textContent = state.practiceTime;
-            saveToStorage();
-        }
-        
-        // Init
+        // INIT
         window.addEventListener('load', () => {
-            initBeats();
-            loadFromStorage();
+            loadState();
+            renderCurrentExercise();
+            renderNotes();
+            initBeatsTab();
+            updateStats();
         });
     </script>
+</body>
+</html>
 </body>
 </html>
